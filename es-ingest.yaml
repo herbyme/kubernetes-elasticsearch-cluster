@@ -42,6 +42,28 @@ spec:
           value: "false"
         - name: HTTP_ENABLE
           value: "true"
+        - name: PATH_DATA
+          value: "/data"
+        - name: NETWORK_HOST
+          value: "0.0.0.0"
+        - name: NUMBER_OF_SHARDS
+          value: "10"
+        - name: NUMBER_OF_REPLICAS
+          value: "2"
+        - name: XPACK_SECURITY_ENABLE
+          value: "false"
+        - name: XPACK_SECURITY_AUDIT_ENABLE
+          value: "false"
+        - name: XPACK_MONITORING_ENABLE
+          value: "true"
+        - name: XPACK_ML_ENABLE
+          value: "true"
+        - name: XPACK_WATCHER_ENABLE
+          value: "true"
+        - name: XPACK_WATCHER_ENABLE
+          value: "true"
+        - name: URL_SLACK_MONITOR_HOOK
+          value: "https://hooks.slack.com/services/..."
         - name: ES_JAVA_OPTS
           value: -Xms256m -Xmx256m
         - name: NETWORK_HOST
