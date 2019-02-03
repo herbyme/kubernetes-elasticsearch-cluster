@@ -21,7 +21,12 @@ spec:
         - -w
         - vm.max_map_count=262144
         securityContext:
-          privileged: true
+          # privileged: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            - IPC_LOCK
+            - SYS_RESOURCE
       containers:
       - name: es-data
         image: herbertyeungservian/elasticsearch:6.6.0
@@ -34,22 +39,22 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: "SERVICE"
+          value: "elasticsearch-cluster"
+        - name: "DISCOVERY_SERVICE"
+          value: "elasticsearch-data-service"
         - name: CLUSTER_NAME
-          value: myesdb
+          value: esdb
         - name: NODE_MASTER
           value: "false"
         - name: NODE_INGEST
           value: "false"
+        - name: NODE_DATA
+          value: "true"
         - name: HTTP_ENABLE
           value: "true"
         - name: PATH_DATA
           value: "/data"
-        - name: NETWORK_HOST
-          value: "0.0.0.0"
-        - name: NUMBER_OF_SHARDS
-          value: "10"
-        - name: NUMBER_OF_REPLICAS
-          value: "2"
         - name: XPACK_SECURITY_ENABLE
           value: "false"
         - name: XPACK_SECURITY_AUDIT_ENABLE
@@ -66,6 +71,8 @@ spec:
           value: "https://hooks.slack.com/services/..."
         - name: ES_JAVA_OPTS
           value: -Xms256m -Xmx256m
+        - name: NETWORK_HOST
+          value: _site_,_lo_
         - name: PROCESSORS
           valueFrom:
             resourceFieldRef:

@@ -21,7 +21,12 @@ spec:
         - -w
         - vm.max_map_count=262144
         securityContext:
-          privileged: true
+          # privileged: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            - IPC_LOCK
+            - SYS_RESOURCE
       containers:
       - name: es-ingest
         image: herbertyeungservian/elasticsearch:6.6.0
@@ -34,22 +39,22 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: "SERVICE"
+          value: "elasticsearch-cluster"
+        - name: "DISCOVERY_SERVICE"
+          value: "elasticsearch-ingest-service"
         - name: CLUSTER_NAME
-          value: myesdb
+          value: esdb
         - name: NODE_MASTER
           value: "false"
+        - name: NODE_INGEST
+          value: "true"
         - name: NODE_DATA
           value: "false"
         - name: HTTP_ENABLE
           value: "true"
         - name: PATH_DATA
           value: "/data"
-        - name: NETWORK_HOST
-          value: "0.0.0.0"
-        - name: NUMBER_OF_SHARDS
-          value: "10"
-        - name: NUMBER_OF_REPLICAS
-          value: "2"
         - name: XPACK_SECURITY_ENABLE
           value: "false"
         - name: XPACK_SECURITY_AUDIT_ENABLE
