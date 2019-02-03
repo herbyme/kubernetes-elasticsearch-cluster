@@ -25,8 +25,7 @@ spec:
           runAsNonRoot: true
           runAsUser: 1000
           capabilities:
-            - IPC_LOCK
-            - SYS_RESOURCE
+            add: ["IPC_LOCK", "SYS_RESOURCE"]
       containers:
       - name: es-master
         image: herbertyeungservian/elasticsearch:6.6.0
