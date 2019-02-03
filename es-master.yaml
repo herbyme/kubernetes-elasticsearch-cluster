@@ -6,7 +6,7 @@ metadata:
     component: elasticsearch
     role: master
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       role: master
@@ -48,7 +48,7 @@ spec:
         - name: CLUSTER_NAME
           value: esdb
         - name: NUMBER_OF_MASTERS
-          value: "2"
+          value: "1"
         - name: NODE_MASTER
           value: "true"
         - name: NODE_INGEST
