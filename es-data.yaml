@@ -54,6 +54,8 @@ spec:
           value: "true"
         - name: PATH_DATA
           value: "/data"
+        - name: NETWORK_HOST
+          value: _site_,_lo_
         - name: XPACK_SECURITY_ENABLE
           value: "false"
         - name: XPACK_SECURITY_AUDIT_ENABLE
@@ -64,14 +66,12 @@ spec:
           value: "true"
         - name: XPACK_WATCHER_ENABLE
           value: "true"
-        - name: XPACK_WATCHER_ENABLE
-          value: "true"
         - name: URL_SLACK_MONITOR_HOOK
           value: "https://hooks.slack.com/services/..."
         - name: ES_JAVA_OPTS
-          value: -Xms256m -Xmx256m
-        - name: NETWORK_HOST
-          value: _site_,_lo_
+          value: -Xms512m -Xmx512m
+        - name: MEMORY_LOCK
+          value: "false"
         - name: PROCESSORS
           valueFrom:
             resourceFieldRef:

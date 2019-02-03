@@ -68,12 +68,12 @@ spec:
           value: "true"
         - name: XPACK_WATCHER_ENABLE
           value: "true"
-        - name: XPACK_WATCHER_ENABLE
-          value: "true"
         - name: URL_SLACK_MONITOR_HOOK
           value: "https://hooks.slack.com/services/..."
         - name: ES_JAVA_OPTS
           value: -Xms512m -Xmx512m
+        - name: MEMORY_LOCK
+          value: "false"
         - name: PROCESSORS
           valueFrom:
             resourceFieldRef:
