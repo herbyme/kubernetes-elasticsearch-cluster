@@ -21,11 +21,11 @@ spec:
         - -w
         - vm.max_map_count=262144
         securityContext:
-          # privileged: true
-          runAsNonRoot: true
-          runAsUser: 1000
-          capabilities:
-            add: ["IPC_LOCK", "SYS_RESOURCE"]
+          privileged: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # capabilities:
+          #   add: ["IPC_LOCK", "SYS_RESOURCE"]
       containers:
       - name: es-data
         image: herbertyeungservian/elasticsearch:6.6.0
