@@ -28,7 +28,7 @@ spec:
           #   add: ["IPC_LOCK", "SYS_RESOURCE"]
       containers:
       - name: es-data
-        image: servianclarke/elasticsearch:6.6.0-mod3
+        image: servianclarke/elasticsearch:6.6.0-mod4
         env:
         - name: NAMESPACE
           valueFrom:
