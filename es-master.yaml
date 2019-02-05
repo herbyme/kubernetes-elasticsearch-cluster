@@ -31,7 +31,7 @@ spec:
           #   add: ["IPC_LOCK", "SYS_RESOURCE"]
       containers:
       - name: es-master
-        image: servianclarke/elasticsearch:6.6.0-mod7
+        image: servianclarke/elasticsearch:6.6.0-mod8
         env:
         - name: NAMESPACE
           valueFrom:
