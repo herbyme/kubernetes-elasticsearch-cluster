@@ -19,7 +19,7 @@ spec:
         image: docker.elastic.co/kibana/kibana:6.6.0
         env:
         - name: CLUSTER_NAME
-          value: myesdb
+          value: esdb
         - name: SERVER_BASEPATH
           value: /api/v1/namespaces/default/services/kibana:http/proxy
         resources:

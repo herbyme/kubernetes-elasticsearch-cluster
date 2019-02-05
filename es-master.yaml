@@ -6,7 +6,7 @@ metadata:
     component: elasticsearch
     role: master
 spec:
-  replicas: 0
+  replicas: 3
   selector:
     matchLabels:
       role: master
@@ -31,7 +31,7 @@ spec:
           #   add: ["IPC_LOCK", "SYS_RESOURCE"]
       containers:
       - name: es-master
-        image: herbertyeungservian/elasticsearch:6.6.0
+        image: herbertyeungservian/elasticsearch:6.6.0-modified-2
         env:
         - name: NAMESPACE
           valueFrom:
@@ -46,7 +46,7 @@ spec:
         - name: "DISCOVERY_SERVICE"
           value: "elasticsearch-master-service"
         - name: CLUSTER_NAME
-          value: esdb
+          value: myesdb
         - name: NUMBER_OF_MASTERS
           value: "1"
         - name: NODE_MASTER
@@ -72,9 +72,9 @@ spec:
         - name: XPACK_WATCHER_ENABLE
           value: "true"
         - name: URL_SLACK_MONITOR_HOOK
-          value: "https://hooks.slack.com/services/..."
+          value: "https://hooks.slack.com/services/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"
         - name: ES_JAVA_OPTS
-          value: -Xms512m -Xmx512m
+          value: -Xms1g -Xmx1g
         - name: MEMORY_LOCK
           value: "false"
         - name: PROCESSORS
@@ -97,7 +97,12 @@ spec:
         volumeMounts:
         - name: storage
           mountPath: /data
+        - name: tmpstorage
+          mountPath: /tmp
       volumes:
           - emptyDir:
               medium: ""
-            name: "storage"
+            name: storage
+          - emptyDir:
+              medium: ""
+            name: tmpstorage
