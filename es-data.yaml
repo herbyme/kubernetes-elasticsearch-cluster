@@ -69,7 +69,7 @@ spec:
         - name: URL_SLACK_MONITOR_HOOK
           value: "https://hooks.slack.com/services/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"
         - name: ES_JAVA_OPTS
-          value: -Xms512m -Xmx512m
+          value: -Xms1g -Xmx1g
         - name: MEMORY_LOCK
           value: "false"
         - name: PROCESSORS
