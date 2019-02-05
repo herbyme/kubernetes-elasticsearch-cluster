@@ -41,7 +41,7 @@ spec:
         - name: "SERVICE"
           value: "elasticsearch-cluster"
         - name: "DISCOVERY_SERVICE"
-          value: "elasticsearch-ingest-service"
+          value: "elasticsearch-discovery"
         - name: CLUSTER_NAME
           value: myesdb
         - name: NODE_MASTER
