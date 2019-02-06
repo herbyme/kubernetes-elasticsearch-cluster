@@ -27,8 +27,8 @@ services:
       - "discovery.zen.ping.unicast.hosts=elasticsearch"
     ulimits:
       memlock:
-        soft: 65536
-        hard: 65536
+        soft: 100000
+        hard: 100000
       max_map_count:
         soft: 262144
         hard: 262144
